@@ -90,6 +90,20 @@
         .container {
             max-width: 800px;
         }
+
+        /* Estilo para la ventana modal en pantalla completa */
+        .modal-fullscreen {
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .modal-content {
+            height: 100%;
+            border-radius: 0;
+        }
     </style>
 </head>
 <body>
@@ -97,7 +111,7 @@
         <h1>Números Virtuales</h1>
         <p>Regístrate en plataformas y redes sociales sin restricciones</p>
         <a href="#contact" class="btn btn-primary btn-lg">Contáctanos</a>
-        <a href="#servicio" class="btn btn-primary btn-lg">Ver Servicio</a>
+        <a href="#adquirir" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adquirirModal">Adquirir Servicio</a>
     </header>
 
     <div class="container my-5">
@@ -159,6 +173,68 @@
         </a>
     </footer>
 
+    <!-- Modal para adquirir servicio -->
+    <div class="modal fade" id="adquirirModal" tabindex="-1" role="dialog" aria-labelledby="adquirirModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="adquirirModalLabel">Selecciona el Servicio</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="serviceForm">
+                        <div class="form-group">
+                            <select class="form-control" id="serviceSelect">
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="WhatsApp">Telegram</option>
+                                <option value="WhatsApp">Instagram</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="WhatsApp">X (Twitter)</option>
+                                <option value="SHEIN">Shein</option>
+                                <option value="Amazon">Amazon</option>
+                                <option value="TEMU">Temu</option>
+                                <option value="TEMU">Otra</option>
+                                <!-- Agregar más opciones según sea necesario -->
+                            </select>
+                        </div>
+                        <h2>Selecciona el País:</h2>
+                        <div class="form-group">
+                            <select class="form-control" id="countrySelect">
+                                
+                                <option value="fr">🇫🇷 [+33] Francia</option>
+                                <option value="de">🇩🇪 [+49] Alemania</option>
+                                <option value="pl">🇵🇱 [+48] Polonia</option>
+                                <option value="be">🇧🇪 [+32] Bélgica</option>
+                                <option value="us">🇺🇸 [+1]  USA</option>
+                                <option value="co">🇨🇴 [+57] Colombia</option>
+                                <option value="ar">🇦🇷 [+54] Argentina</option>
+                                <option value="pe">🇵🇪 [+51] Perú</option>
+                                <option value="ec">🇪🇨 [+593] Ecuador</option>
+                                <option value="cl">🇨🇱 [+56] Chile</option>
+                                <option value="hn">🇭🇳 [+504] Honduras</option>
+                                <option value="ni">🇳🇮 [+505] Nicaragua</option>
+                                <option value="pa">🇵🇦 [+507] Panamá</option>
+                                <!-- Agregar más países según sea necesario -->
+                            </select>
+                        </div>
+                        <p>Al continuar, aceptas nuestras políticas y condiciones sobre el servicio.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="acceptTerms" required>
+                            <label class="form-check-label" for="acceptTerms">
+                                Acepto los términos y condiciones </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitOrder" class="btn btn-primary" disabled>Hacer Pedido</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -175,6 +251,20 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Habilitar el botón "Hacer Pedido" solo si se acepta los términos
+        document.getElementById('acceptTerms').addEventListener('change', function() {
+            document.getElementById('submitOrder').disabled = !this.checked;
+        });
+
+        // Manejo del botón "Hacer Pedido"
+        document.getElementById('submitOrder').addEventListener('click', function() {
+            const service = document.getElementById('serviceSelect').value;
+            const country = document.getElementById('countrySelect').options[document.getElementById('countrySelect').selectedIndex].text.split(' ')[2]; // Obtener el nombre completo del país
+            const message = `Servicio de Números Virtuales\nPlataforma: ${service}\nPaís: ${country}`;
+            const whatsappUrl = `https://wa.me/18632541732?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
         });
     </script>
 </body>
