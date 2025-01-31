@@ -6,6 +6,7 @@
     <title>Números Virtuales</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -15,7 +16,7 @@
 
         header {
             background: url('https://source.unsplash.com/1600x900/?technology,phone') no-repeat center center/cover;
-            color: white;
+            color: #007bff;
             padding: 60px 0;
             text-align: center;
         }
@@ -47,8 +48,15 @@
             transform: translateY(0);
         }
 
-        ul, ol {
-            margin-left: 20px;
+        .list-icon {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .list-icon i {
+            margin-right: 10px;
+            color: #007bff;
         }
 
         footer {
@@ -70,6 +78,15 @@
             background-color: #0056b3;
         }
 
+        .btn-custom {
+            background-color: #25D366; /* Color de WhatsApp */
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #128C7E; /* Color de WhatsApp al pasar el mouse */
+        }
+
         .container {
             max-width: 800px;
         }
@@ -87,28 +104,46 @@
         <section id="servicio" data-aos="fade-up">
             <h2>Nuestro Servicio</h2>
             <p>Ofrecemos números virtuales que permiten registrarse en plataformas y redes sociales que no están disponibles o permitidas en Cuba.</p>
-            <ul>
-                <li>Números exclusivos para registro en plataformas específicas.</li>
-                <li>Uso en WhatsApp, Facebook, tiendas online y más.</li>
-            </ul>
+            <div class="list-icon">
+                <i class="fas fa-phone-alt"></i>
+                <span>Números exclusivos para registro en plataformas específicas.</span>
+            </div>
+            <div class="list-icon">
+                <i class="fab fa-whatsapp"></i>
+                <span>Uso en WhatsApp, Facebook, tiendas online y más.</span>
+            </div>
         </section>
 
         <section data-aos="fade-up">
             <h2>¿Por qué considerar un número virtual?</h2>
-            <ul>
-                <li><strong>Privacidad:</strong> Mantienes tu número personal separado del número de negocios.</li>
-                <li><strong>Profesionalismo:</strong> Mejora la imagen profesional de tu negocio.</li>
-                <li><strong>Accesibilidad:</strong> Regístrate en todas las plataformas que desees.</li>
-            </ul>
+            <div class="list-icon">
+                <i class="fas fa-user-secret"></i>
+                <span><strong>Privacidad:</strong> Mantienes tu número personal separado del número de negocios.</span>
+            </div>
+            <div class="list-icon">
+                <i class="fas fa-briefcase"></i>
+                <span><strong>Profesionalismo:</strong> Mejora la imagen profesional de tu negocio.</span>
+            </div>
+            <div class="list-icon">
+                <i class="fas fa-globe"></i>
+                <span><strong>Accesibilidad:</strong> Regístrate en todas las plataformas que desees.</span>
+            </div>
         </section>
 
         <section data-aos="fade-up">
             <h2>Proceso de Venta</h2>
-            <ol>
-                <li>Paga el 50% de la tarifa total antes de iniciar el proceso.</li>
-                <li>Recibe el número virtual y el código para verificación.</li>
-                <li>Confirma y paga el resto del costo.</li>
-            </ol>
+            <div class="list-icon">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Paga el 50% de la tarifa total antes de iniciar el proceso.</span>
+            </div>
+            <div class="list-icon">
+                <i class="fas fa-envelope-open-text"></i>
+                <span>Recibe el número virtual y el código para verificación.</span>
+            </div>
+            <div class="list-icon">
+                <i class="fas fa-check-circle"></i>
+                <span>Confirma y paga el resto del costo.</span>
+            </div>
         </section>
 
         <section data-aos="fade-up">
@@ -118,7 +153,10 @@
     </div>
 
     <footer id="contact" class="text-center">
-        <p>Contacto: +1 (863) 254-1732 | negociospropios01@gmail.com</p <p>Las Tunas, Cuba</p>
+        <p>Contacto: +1 (863) 254-1732</p><br>
+        <a href="https://wa.me/18632541732?text=%C2%A1Hola%2C%20Me%20interesa%20el%20servicio%20de%20Numeros%20Virtuales!" class="btn btn-success btn-custom">
+            <i class="fab fa-whatsapp"></i> Chatear por WhatsApp
+        </a>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
