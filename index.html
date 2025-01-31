@@ -54,6 +54,20 @@
             color: white;
             font-size: 24px;
         }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .social-icons a {
+            color: #1e3c72;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #2a5298;
+        }
     </style>
 </head>
 <body>
@@ -68,6 +82,13 @@
         </div>
         <div class="offcanvas-body">
             <button class="btn btn-secondary w-100" onclick="toggleDarkMode()">Modo Oscuro/Claro</button>
+            <h3 class="mt-4">Síguenos</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
         </div>
     </div>
     
