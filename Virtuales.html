@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Números Virtuales</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,9 +14,10 @@
         }
 
         header {
-            background: linear-gradient(90deg, #007bff, #6610f2);
+            background: url('https://source.unsplash.com/1600x900/?technology,phone') no-repeat center center/cover;
             color: white;
             padding: 60px 0;
+            text-align: center;
         }
 
         h1 {
@@ -35,6 +37,14 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 30px;
             margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         ul, ol {
@@ -66,13 +76,15 @@
     </style>
 </head>
 <body>
-    <header class="text-center">
+    <header>
         <h1>Números Virtuales</h1>
         <p>Regístrate en plataformas y redes sociales sin restricciones</p>
+        <a href="#contact" class="btn btn-primary btn-lg">Contáctanos</a>
+        <a href="#servicio" class="btn btn-outline-light btn-lg">Ver Servicio</a>
     </header>
 
     <div class="container my-5">
-        <section>
+        <section id="servicio" data-aos="fade-up">
             <h2>Nuestro Servicio</h2>
             <p>Ofrecemos números virtuales que permiten registrarse en plataformas y redes sociales que no están disponibles o permitidas en Cuba.</p>
             <ul>
@@ -81,7 +93,7 @@
             </ul>
         </section>
 
-        <section>
+        <section data-aos="fade-up">
             <h2>¿Por qué considerar un número virtual?</h2>
             <ul>
                 <li><strong>Privacidad:</strong> Mantienes tu número personal separado del número de negocios.</li>
@@ -90,7 +102,7 @@
             </ul>
         </section>
 
-        <section>
+        <section data-aos="fade-up">
             <h2>Proceso de Venta</h2>
             <ol>
                 <li>Paga el 50% de la tarifa total antes de iniciar el proceso.</li>
@@ -99,21 +111,23 @@
             </ol>
         </section>
 
-        <section>
+        <section data-aos="fade-up">
             <h2>Alcance de Responsabilidad</h2>
             <p>No nos responsabilizamos del uso que usted le dé a su número una vez contratado el servicio.</p>
         </section>
     </div>
 
-    <footer class="text-center">
-        <p>Contacto: +1 (863) 254-1732 | negociospropios01@gmail.com</p>
-        <p>Las Tunas, Cuba</p>
+    <footer id="contact" class="text-center">
+        <p>Contacto: +1 (863) 254-1732 | negociospropios01@gmail.com</p <p>Las Tunas, Cuba</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
     <script>
+        AOS.init();
+
         // Efecto de suavizado al hacer scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
