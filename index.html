@@ -38,12 +38,19 @@
         .active {
             transform: scale(1.2); /* Aumenta el tamaño del botón */
         }
+
+        .card {
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
     <div id="content">
         <section id="home-section">
-            <h2>Catalogo de Juegos</h2>
+            <h2>Catálogo de Juegos</h2>
+            <div id="card-container" class="row">
+                <!-- Las cards se agregarán aquí -->
+            </div>
         </section>
 
         <section id="form-section" class="hidden">
@@ -86,7 +93,63 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Información del Juego</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Información del juego se cargará aquí -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        async function loadData() {
+            const response = await fetch("https://script.google.com/macros/s/AKfycbxvf0a2sscc _lI157HRZfGBssLtsvxczbLz6KglxtNLiKRgxeWnuXm-Atp3ZrW6OGRARw/exec");
+            const data = await response.json();
+            const container = document.getElementById('card-container');
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card col-md-4';
+                card.innerHTML = `
+                    <div class="card-body">
+                        <h5 class="card-title">${item.Nombre}</h5>
+                        <img src="${item.Imagen}" class="card-img-top" alt="${item.Nombre}">
+                        <p class="card-text">${item.Sinopsis}</p>
+                        <button class="btn btn-primary" onclick="openModal('${item.Id}')">Revisar</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openModal(id) {
+            // Aquí puedes buscar el juego por ID y cargar la información en el modal
+            const modalBody = document.getElementById('modal-body');
+            // Suponiendo que tienes una función para obtener los detalles del juego
+            const gameDetails = getGameDetailsById(id); // Implementa esta función según tu lógica
+            modalBody.innerHTML = `
+                <h5>${gameDetails.Nombre}</h5>
+                <p><strong>Tamaño:</strong> ${gameDetails.Tamaño}</p>
+                <p><strong>Categoría:</strong> ${gameDetails.Categoría}</p>
+                <p><strong>Requisitos:</strong> ${gameDetails.Requisitos}</p>
+                <p><strong>Precio:</strong> $${gameDetails.Precio}</p>
+            `;
+            $('#infoModal').modal('show');
+        }
+
+        loadData();
         // Función para manejar el efecto de clic
         function handleButtonClick(button) {
             button.classList.add('active');
@@ -117,5 +180,8 @@
             document.getElementById('entry-form').reset();
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
